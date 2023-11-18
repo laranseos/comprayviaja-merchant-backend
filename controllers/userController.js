@@ -175,9 +175,10 @@ const mailHandler = async (req, res) =>{
      const transporter=nodemailer.createTransport({
       
         host: 'smtp.gmail.com',
-        port: 465,
-        type: "SMTP",
-        secure: true, // true for 465, false for other ports
+        port: 587,
+        // type: "SMTP",
+        secure: false, // true for 465, false for other ports
+        requireTLS: true,
         auth: {
            user: 'profitteamcad@gmail.com', // your email address
            pass: 'vojhaizydjtqdahe' // your email password
@@ -203,6 +204,7 @@ const mailHandler = async (req, res) =>{
            console.log(err)
            res.status(500).json({success:false,message:"Internal Server Error"})
         }else{
+           console.log('Email send sucessfully!!!!!!!');
            res.status(200).json({success:true,message:"Email sent successfully"})
         }
      });
