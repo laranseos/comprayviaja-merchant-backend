@@ -9,7 +9,14 @@ import userRoutes from './routes/userRoutes.js';
 import userBalance from './routes/userBalance.js';
 import treeRoutes from './routes/treeRoutes.js';
 import historyRoutes from './routes/historyRoutes.js';
+import { Client } from 'appwrite';
 
+const client = new Client();
+
+client
+    .setEndpoint('https://cloud.appwrite.io/v1')
+    .setProject('655853a7f10604961709');
+    
 const port = process.env.PORT || 5000;
 
 connectDB();
