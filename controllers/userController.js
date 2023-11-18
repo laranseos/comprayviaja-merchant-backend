@@ -174,9 +174,10 @@ const mailHandler = async (req, res) =>{
       
      const transporter=nodemailer.createTransport({
         host: 'smtp.gmail.com',
-        port: 465,
-        type: "SMTP",
-        secure: true, // true for 465, false for other ports
+        port: 587,
+        // type: "SMTP",
+        secure: false, // true for 465, false for other ports
+        requireTLS: true,
         auth: {
            user: 'profitteamcad@gmail.com', // your email address
            pass: 'vojhaizydjtqdahe' // your email password
