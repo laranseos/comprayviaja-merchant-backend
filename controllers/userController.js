@@ -175,9 +175,9 @@ const mailHandler = async (req, res) =>{
      const transporter=nodemailer.createTransport({
       
         host: 'smtp.gmail.com',
-        port: 587,
-        // type: "SMTP",
-        secure: false, // true for 465, false for other ports
+        port: 465,
+        type: "SMTP",
+        secure: true, // true for 465, false for other ports
         requireTLS: true,
         auth: {
            user: 'profitteamcad@gmail.com', // your email address
@@ -185,7 +185,7 @@ const mailHandler = async (req, res) =>{
         },
         service:'gmail'
      })
-     console.log('Ready to send email');
+     console.log('Up to ready sending email');
      process.env.VERIFICATION_CODE=Math.floor(100000+Math.random()*900000);
      process.env.GENERATED_TIME=Date.now();
      
