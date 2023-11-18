@@ -172,36 +172,36 @@ const mailHandler = async (req, res) =>{
       res.status(400).json({message:"User already exists."})
     } else {
       
-    //  const transporter=nodemailer.createTransport({
-    //     port: 587,
-    //     secure: false, // true for 465, false for other ports
-    //     auth: {
-    //        user: 'profitteamcad@gmail.com', // your email address
-    //        pass: 'vojhaizydjtqdahe' // your email password
-    //     },
-    //     service:'gmail'
-    //  })
+     const transporter=nodemailer.createTransport({
+        port: 587,
+        secure: false, // true for 465, false for other ports
+        auth: {
+           user: 'profitteamcad@gmail.com', // your email address
+           pass: 'vojhaizydjtqdahe' // your email password
+        },
+        service:'gmail'
+     })
 
      process.env.VERIFICATION_CODE=Math.floor(100000+Math.random()*900000);
      process.env.GENERATED_TIME=Date.now();
      res.status(200).json({message:'sent'});
      console.log(process.env.VERIFICATION_CODE);
       
-    //  const mailOptions={
-    //     from:'profitteamcad@gmail.com',
-    //     to:email,
-    //     subject:`Your verification code is ${process.env.VERIFICATION_CODE}`,
-    //     text:"code",
-    //     html:emailTemplate(email),
-    //  }
-    //  await transporter.sendMail(mailOptions,(err,info)=>{
-    //     if(err){
-    //        console.log(err)
-    //        res.status(500).json({success:false,message:"Internal Server Error"})
-    //     }else{
-    //        res.status(200).json({success:true,message:"Email sent successfully"})
-    //     }
-    //  });
+     const mailOptions={
+        from:'profitteamcad@gmail.com',
+        to:email,
+        subject:`Your verification code is ${process.env.VERIFICATION_CODE}`,
+        text:"code",
+        html:emailTemplate(email),
+     }
+     await transporter.sendMail(mailOptions,(err,info)=>{
+        if(err){
+           console.log(err)
+           res.status(500).json({success:false,message:"Internal Server Error"})
+        }else{
+           res.status(200).json({success:true,message:"Email sent successfully"})
+        }
+     });
 
   }
 };
