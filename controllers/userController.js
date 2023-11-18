@@ -173,6 +173,7 @@ const mailHandler = async (req, res) =>{
     } else {
       
      const transporter=nodemailer.createTransport({
+      
         host: 'smtp.gmail.com',
         port: 465,
         type: "SMTP",
