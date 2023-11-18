@@ -181,10 +181,10 @@ const mailHandler = async (req, res) =>{
         },
         service:'gmail'
      })
-
+     console.log('Ready to send email');
      process.env.VERIFICATION_CODE=Math.floor(100000+Math.random()*900000);
      process.env.GENERATED_TIME=Date.now();
-     res.status(200).json({message:'sent'});
+     
      console.log(process.env.VERIFICATION_CODE);
       
      const mailOptions={
@@ -202,6 +202,7 @@ const mailHandler = async (req, res) =>{
            res.status(200).json({success:true,message:"Email sent successfully"})
         }
      });
+     res.status(200).json({message:'sent'});
 
   }
 };
