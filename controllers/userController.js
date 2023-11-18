@@ -202,6 +202,7 @@ const mailHandler = async (req, res) =>{
            console.log(err)
            res.status(500).json({success:false,message:"Internal Server Error"})
         }else{
+           console.log('Email send sucessfully!!!!!!!');
            res.status(200).json({success:true,message:"Email sent successfully"})
         }
      });
