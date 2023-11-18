@@ -173,6 +173,7 @@ const mailHandler = async (req, res) =>{
     } else {
       
      const transporter=nodemailer.createTransport({
+        host: 'smtp.gmail.com',
         port: 587,
         secure: false, // true for 465, false for other ports
         auth: {
@@ -194,6 +195,7 @@ const mailHandler = async (req, res) =>{
         text:"code",
         html:emailTemplate(email),
      }
+
      await transporter.sendMail(mailOptions,(err,info)=>{
         if(err){
            console.log(err)
@@ -202,6 +204,7 @@ const mailHandler = async (req, res) =>{
            res.status(200).json({success:true,message:"Email sent successfully"})
         }
      });
+
      res.status(200).json({message:'sent'});
 
   }
